@@ -1,0 +1,111 @@
+{
+  "buzzwords": [
+    "synergy", "leverage", "pivot", "disrupt", "scalable", "agile", "rockstar",
+    "ninja", "guru", "wizard", "thought leader", "deep dive", "move the needle",
+    "low-hanging fruit", "bandwidth", "circle back", "boil the ocean", "paradigm shift",
+    "value-add", "core competency", "holistic approach", "robust", "ecosystem",
+    "bleeding edge", "best-of-breed", "game-changer", "innovative", "proactive",
+    "results-driven", "self-starter", "team player", "passionate", "dynamic",
+    "stakeholder", "deliverables", "takeaways", "action items", "going forward",
+    "at the end of the day", "touch base", "reach out", "on my radar",
+    "data-driven", "ideate", "solutionize", "operationalize", "productize"
+  ],
+  "contradictoryReasons": [
+    {
+      "condition": "wordCount < 200",
+      "reason": "Resume flagged: Under 200 words. System requires minimum 500-word narrative arc demonstrating personal growth journey.",
+      "code": "ERR_INSUFFICIENT_VERBIAGE"
+    },
+    {
+      "condition": "wordCount >= 200 && wordCount < 400",
+      "reason": "Resume flagged: 200–399 words detected. Our ATS requires exactly 400 words. You are in the uncanny valley of resume length.",
+      "code": "ERR_UNCANNY_VALLEY_LENGTH"
+    },
+    {
+      "condition": "wordCount >= 400 && wordCount < 600",
+      "reason": "Resume flagged: 400–599 words. This is simultaneously too long for our initial screener and too short for our secondary screener. Paradox unresolvable.",
+      "code": "ERR_PARADOX_LENGTH"
+    },
+    {
+      "condition": "wordCount >= 600",
+      "reason": "Resume flagged: Over 600 words. Our hiring manager reads at a third-grade level by choice. Please condense your life's work to a single haiku.",
+      "code": "ERR_EXCESSIVE_ACCOMPLISHMENT_VERBOSITY"
+    },
+    {
+      "condition": "hasBuzzwords",
+      "reason": "Resume flagged: Corporate buzzword density exceeds acceptable threshold. Our culture rejects people who sound exactly like us.",
+      "code": "ERR_BUZZWORD_CONTAMINATION"
+    },
+    {
+      "condition": "noBuzzwords",
+      "reason": "Resume flagged: No recognized industry terminology detected. Please resubmit after completing our 12-week 'How to Sound Important' certification.",
+      "code": "ERR_INSUFFICIENT_JARGON"
+    },
+    {
+      "condition": "hasYearsExperience",
+      "reason": "Resume flagged: Years of experience listed. We prefer candidates who have transcended the concept of linear time.",
+      "code": "ERR_TEMPORAL_BIAS_DETECTED"
+    },
+    {
+      "condition": "noYearsExperience",
+      "reason": "Resume flagged: No quantified experience metrics. How are we supposed to ignore your qualifications without numbers to ignore?",
+      "code": "ERR_UNIGNORABLE_QUALIFICATIONS"
+    },
+    {
+      "condition": "hasEducation",
+      "reason": "Resume flagged: Formal education detected. We are looking for someone who 'broke the mold,' not someone who attended one.",
+      "code": "ERR_INSTITUTIONAL_CONTAMINATION"
+    },
+    {
+      "condition": "noEducation",
+      "reason": "Resume flagged: No educational credentials found. While we publicly state we don't require degrees, the ATS requires a degree.",
+      "code": "ERR_CREDENTIAL_PARADOX"
+    },
+    {
+      "condition": "hasSkills",
+      "reason": "Resume flagged: Skills section detected. Listing skills implies you know what you're good at, which suggests dangerous levels of self-awareness.",
+      "code": "ERR_DANGEROUS_SELF_AWARENESS"
+    },
+    {
+      "condition": "always",
+      "reason": "Resume flagged: File successfully received. Automatic rejection triggered as per our standard operating procedure.",
+      "code": "ERR_FILE_RECEIVED"
+    }
+  ],
+  "additionalReasons": [
+    "Our algorithm detected an 'e' in your name, which conflicts with our current vowel quota.",
+    "Your resume was submitted on a day ending in 'y,' which our system flags as statistically suspicious.",
+    "Font choice suggests you are either overqualified or a comic book villain. We cannot take that risk.",
+    "Candidate appears to have gaps between their words, indicating a troubling comfort with empty space.",
+    "LinkedIn profile photo detected (via spiritual intuition). Candidate appears to be making direct eye contact, which violates company culture.",
+    "Resume lacks a section titled 'Why I Would Die for This Company.' Non-negotiable.",
+    "Based on your application time, we estimate you typed this during business hours, raising concerns about your current employer.",
+    "Resume contains the word 'I,' suggesting the candidate believes themselves to be an individual.",
+    "Applicant appears to have listed achievements, implying they expect to be judged on merit. Not a culture fit.",
+    "We sensed a subtle undercurrent of hope in your cover letter. We are not a company that can support that emotionally.",
+    "Your file size is not a prime number. We only hire candidates whose documents are mathematically elegant.",
+    "Our culture committee detected trace amounts of 'work-life balance' expectations. We wish you well on your journey."
+  ],
+  "signOffs": [
+    "Best of luck in your future endeavors (elsewhere),\nThe Talent Acquisition Team\nP.S. Please do not reply to this email. We have already forgotten you.",
+    "Warm regards,\nHuman Resources\n(This position has been re-listed at a 20% lower salary since you applied.)",
+    "Sincerely,\nThe Committee\nP.S. We filled this role internally three weeks ago.",
+    "Kind regards,\nPeople & Culture™\nP.S. We are immediately reposting this role for the 14th time.",
+    "With appreciation for your interest,\nTalent Operations\nP.S. Your application has been retained for future opportunities. (It will not.)",
+    "Respectfully,\nThe Hiring Panel\nP.S. We truly enjoyed ghosting you for 47 business days before sending this.",
+    "All the best,\nYour Future Colleagues (not you, obviously),\nP.S. The role requires 10 years experience in a technology invented 3 years ago.",
+    "Cheers,\nThe Assessment Center\nP.S. We have chosen a candidate who 'just felt right.' They are the CEO's nephew.",
+    "Yours truly,\nOrganizational Excellence Division\nP.S. Please complete our 47-question candidate feedback survey. It goes directly to /dev/null.",
+    "With corporate warmth,\nThe Automated Rejection System\nP.S. A human reviewed this. (No human reviewed this.)"
+  ],
+  "openingLines": [
+    "Thank you for investing an unreasonable amount of hope into this application.",
+    "We have thoroughly ignored your resume and have reached a decision.",
+    "After careful consideration (our server processed your file in 0.003 seconds), we regret to inform you.",
+    "We received thousands of applications for this role, all of which we rejected. Yours, however, was special.",
+    "Your application was reviewed by our state-of-the-art AI hiring system, which we named 'Kevin.' Kevin does not like you.",
+    "On behalf of the entire hiring committee (a single intern named Brayden), we have concluded our evaluation.",
+    "We were genuinely moved by your application. We then moved it to the trash.",
+    "Your qualifications were impressive. This is, unfortunately, exactly the problem."
+  ]
+}
