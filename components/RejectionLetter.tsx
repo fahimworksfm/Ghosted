@@ -1,12 +1,31 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import type { RejectionResult } from "@/lib/rejection-engine";
 
 interface Props {
   result: RejectionResult;
+  onStampRevealed?: () => void;
 }
 
-export default function RejectionLetter({ result }: Props) {
+const TIER_COLORS: Record<string, string> = {
+  bronze: "text-amber-700 border-amber-600",
+  silver: "text-gray-500 border-gray-400",
+  gold: "text-yellow-600 border-yellow-500",
+  platinum: "text-purple-600 border-purple-500",
+};
+
+export default function RejectionLetter({ result, onStampRevealed }: Props) {
+  const [stampVisible, setStampVisible] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setStampVisible(true);
+      onStampRevealed?.();
+    }, 800);
+    return () => clearTimeout(id);
+  }, [onStampRevealed]);
+
   const date = new Date().toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
@@ -14,9 +33,11 @@ export default function RejectionLetter({ result }: Props) {
     day: "numeric",
   });
 
+  const tierColor = TIER_COLORS[result.tier] ?? "text-red-500 border-red-500";
+
   return (
     <div
-      className="bg-white border-4 border-gray-400 shadow-2xl p-8 max-w-2xl mx-auto"
+      className="bg-white border-4 border-gray-400 shadow-2xl p-8 max-w-2xl mx-auto relative overflow-hidden"
       style={{ fontFamily: "'Courier New', Courier, monospace" }}
     >
       {/* Letterhead */}
@@ -32,10 +53,15 @@ export default function RejectionLetter({ result }: Props) {
         </div>
       </div>
 
-      {/* Date & ref */}
-      <div className="flex justify-between text-xs text-gray-500 mb-6">
+      {/* Date, tier, ref */}
+      <div className="flex justify-between items-start text-xs text-gray-500 mb-6">
         <span>{date}</span>
-        <span>REF: {result.primaryCode}</span>
+        <div className="text-right space-y-1">
+          <div className={`border ${tierColor} px-2 py-0.5 text-xs font-bold uppercase`}>
+            {result.tierLabel}
+          </div>
+          <div>REF: {result.primaryCode}</div>
+        </div>
       </div>
 
       {/* Salutation */}
@@ -64,7 +90,7 @@ export default function RejectionLetter({ result }: Props) {
       {/* Stats */}
       <div className="my-4 bg-gray-100 border border-gray-300 p-3 text-xs font-mono text-gray-600">
         <p className="font-bold text-gray-700 mb-2">SYSTEM ANALYSIS REPORT</p>
-        <p>Word Count Detected: {result.stats.wordCount} words</p>
+        <p>Word Count: {result.stats.wordCount} words</p>
         <p>
           Buzzwords Flagged:{" "}
           {result.stats.buzzwordsFound.length > 0
@@ -74,15 +100,16 @@ export default function RejectionLetter({ result }: Props) {
                 : "")
             : "None (this is also a problem)"}
         </p>
-        <p>Processing Time: {result.stats.processingTimeMs}ms (your life reviewed in milliseconds)</p>
-        <p>Human Involvement: 0%</p>
-        <p>Regret Level: Simulated</p>
+        <p>ATS Score: {result.realAnalysis.atsFriendlyScore}/100</p>
+        <p>Processing Time: {result.stats.processingTimeMs}ms (your career reviewed in milliseconds)</p>
+        <p>Human Involvement: 0.00%</p>
+        <p>Regret Level: Simulated · Rejection Tier: {result.tierLabel}</p>
       </div>
 
       <p className="mt-4 text-sm text-gray-700">
         We wish you the very best in your search and encourage you to apply again in 6 months,
         at which point this role will have been eliminated, reinstated at a lower salary grade,
-        and filled by someone who "just felt right."
+        and filled by someone who &quot;just felt right.&quot;
       </p>
 
       {/* Sign off */}
@@ -90,14 +117,17 @@ export default function RejectionLetter({ result }: Props) {
         {result.signOff}
       </div>
 
-      {/* Footer stamp */}
-      <div className="mt-8 flex justify-end">
-        <div
-          className="border-4 border-red-500 text-red-500 font-black text-2xl px-4 py-2 rotate-[-8deg] opacity-80"
-          style={{ fontFamily: "Arial Black, sans-serif" }}
-        >
-          REJECTED
-        </div>
+      {/* Animated REJECTED stamp */}
+      <div
+        className={`absolute bottom-8 right-8 border-4 border-red-500 text-red-500 font-black text-2xl px-4 py-2
+                    transition-all duration-500 ${
+                      stampVisible
+                        ? "opacity-80 rotate-[-8deg] scale-100"
+                        : "opacity-0 scale-150"
+                    }`}
+        style={{ fontFamily: "Arial Black, sans-serif" }}
+      >
+        REJECTED
       </div>
     </div>
   );

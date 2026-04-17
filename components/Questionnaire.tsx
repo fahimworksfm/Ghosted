@@ -61,15 +61,22 @@ function shuffleOptions(options: string[], seed: number): string[] {
 
 interface Props {
   onChange: (answers: Record<string, string>) => void;
+  onCompanyChange: (company: string) => void;
 }
 
-export default function Questionnaire({ onChange }: Props) {
+export default function Questionnaire({ onChange, onCompanyChange }: Props) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [company, setCompany] = useState("");
 
   function handleChange(id: string, value: string) {
     const updated = { ...answers, [id]: value };
     setAnswers(updated);
     onChange(updated);
+  }
+
+  function handleCompanyChange(value: string) {
+    setCompany(value);
+    onCompanyChange(value);
   }
 
   return (
@@ -81,6 +88,27 @@ export default function Questionnaire({ onChange }: Props) {
         <p className="text-red-600 text-xs mt-1">
           Failure to complete all fields will result in immediate disqualification
           and possible legal action.
+        </p>
+      </div>
+
+      {/* Company name field */}
+      <div className="border-2 border-blue-700 bg-white p-4 shadow-[4px_4px_0px_#dc2626]">
+        <label className="block text-sm font-bold text-blue-900 mb-2 uppercase tracking-wide">
+          Company Name <span className="text-gray-400 font-normal normal-case">(optional — for the counter)</span>
+        </label>
+        <p className="text-gray-600 text-xs mb-3">
+          Which company&apos;s ATS will be processing your rejection today?
+        </p>
+        <input
+          type="text"
+          placeholder="e.g. Google, Amazon, MegaCorp Industries™"
+          value={company}
+          onChange={(e) => handleCompanyChange(e.target.value)}
+          className="w-full border-2 border-blue-600 bg-yellow-50 text-gray-900 p-2 text-sm font-mono
+                     focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-400"
+        />
+        <p className="text-gray-400 text-xs mt-1 font-mono">
+          We&apos;ll show you how many others have checked this company. Solidarity through data.
         </p>
       </div>
 

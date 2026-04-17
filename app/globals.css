@@ -1,11 +1,61 @@
 @import "tailwindcss";
 
+/* ── Marquee ticker ─────────────────────────────────────────────────── */
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
 .animate-marquee {
-  /* The marquee div contains text duplicated enough to scroll seamlessly */
   animation: marquee 22s linear infinite;
+}
+
+/* ── Neon border flicker (used on Platinum tier badge) ──────────────── */
+@keyframes neon-flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96%            { opacity: 0.7; }
+  97%            { opacity: 1; }
+  98%            { opacity: 0.5; }
+}
+
+.neon-flicker {
+  animation: neon-flicker 4s infinite;
+}
+
+/* ── Progress bar scanline shimmer ──────────────────────────────────── */
+@keyframes scanline {
+  0%   { background-position: 0 -100%; }
+  100% { background-position: 0 200%; }
+}
+
+/* ── Number counter roll-up ─────────────────────────────────────────── */
+@keyframes countup {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-countup {
+  animation: countup 0.4s ease-out;
+}
+
+/* ── Slide-in from bottom (timeline events) ─────────────────────────── */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out both;
+}
+
+/* ── Stamp slam (REJECTED stamp) ────────────────────────────────────── */
+@keyframes stamp-slam {
+  0%   { transform: rotate(-8deg) scale(2); opacity: 0; }
+  60%  { transform: rotate(-8deg) scale(0.95); opacity: 1; }
+  75%  { transform: rotate(-8deg) scale(1.05); }
+  100% { transform: rotate(-8deg) scale(1); opacity: 1; }
+}
+
+.animate-stamp {
+  animation: stamp-slam 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }

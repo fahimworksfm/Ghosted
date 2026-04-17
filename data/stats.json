@@ -1,0 +1,32 @@
+{
+  "total": 1247,
+  "today": { "date": "2020-01-01", "count": 0 },
+  "companies": {
+    "google": 203,
+    "amazon": 187,
+    "meta": 142,
+    "apple": 118,
+    "microsoft": 96,
+    "netflix": 74,
+    "uber": 61,
+    "airbnb": 53,
+    "stripe": 47,
+    "openai": 41,
+    "salesforce": 38,
+    "twitter": 34,
+    "linkedin": 29,
+    "shopify": 24,
+    "dropbox": 19,
+    "spotify": 18,
+    "figma": 15,
+    "notion": 12,
+    "vercel": 10,
+    "atlassian": 9
+  },
+  "tierCounts": {
+    "bronze": 312,
+    "silver": 378,
+    "gold": 411,
+    "platinum": 146
+  }
+}
